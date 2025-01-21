@@ -2,8 +2,6 @@ const fs = require("fs");
 const path = require("path");
 const { exec } = require("child_process");
 const Groq = require("groq-sdk");
-const wav = require("wav");
-const recorder = require("node-record-lpcm16");
 const { GlobalKeyboardListener } = require("node-global-key-listener");
 require("dotenv").config();
 const keyboard = new GlobalKeyboardListener();
@@ -29,7 +27,6 @@ let recordingStream = null;
 let fileStream = null;
 
 keyboard.addListener((e) => {
-  console.log(e);
   if (e.name === "F9" && e.state === "DOWN") {
     console.log("F9 was pressed");
     if (isRecording) {
@@ -149,4 +146,4 @@ process.on("SIGINT", () => {
 // Start the application
 console.log("Speech-to-Text Tool with Groq Processing");
 console.log("Press F9 to start/stop recording");
-console.log("Press Ctrl+C to quit");
+console.log("Press 'Pause' to quit");
