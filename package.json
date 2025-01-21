@@ -1,0 +1,21 @@
+{
+  "name": "medusa",
+  "version": "1.0.0",
+  "main": "speech2text.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "active-win": "^8.2.1",
+    "dotenv": "^16.4.7",
+    "groq-sdk": "^0.12.0",
+    "node-global-key-listener": "^0.3.0",
+    "node-microphone": "^0.1.6",
+    "node-record-lpcm16": "^1.0.1",
+    "wav": "^1.0.2"
+  }
+}
