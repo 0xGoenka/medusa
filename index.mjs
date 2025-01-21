@@ -1,11 +1,13 @@
-const fs = require("fs");
-const path = require("path");
-const { exec } = require("child_process");
-const Groq = require("groq-sdk");
-const { GlobalKeyboardListener } = require("node-global-key-listener");
-require("dotenv").config();
+import clipboardy from "clipboardy";
+import fs from "fs";
+import path from "path";
+import { exec } from "child_process";
+import Groq from "groq-sdk";
+import { GlobalKeyboardListener } from "node-global-key-listener";
+import dotenv from "dotenv";
+dotenv.config();
 const keyboard = new GlobalKeyboardListener();
-let Mic = require("node-microphone");
+import Mic from "node-microphone";
 let mic = new Mic({
   device: "hw:1,0",
 });
@@ -14,7 +16,7 @@ let mic = new Mic({
 // Configuration
 const GROQ_API_KEY = process.env.GROQ_API_KEY;
 console.log(GROQ_API_KEY);
-const RECORDING_PATH = path.join(__dirname, "recording.wav");
+const RECORDING_PATH = "recording.wav";
 const HOTKEY = "F9";
 
 // Initialize Groq client
@@ -118,12 +120,16 @@ function typeText(text) {
       return;
     }
 
-    exec(`xdotool type "${text}" && xdotool key Return`, (error) => {
+    // Copy text to clipboard
+    clipboardy.writeSync(text);
+
+    // Simulate paste action
+    exec(`xdotool key ctrl+v && xdotool key Return`, (error) => {
       if (error) {
-        console.error("Error typing text:", error);
+        console.error("Error pasting text:", error);
         reject(error);
       } else {
-        console.log("Typed:", text);
+        console.log("Pasted:", text);
         resolve();
       }
     });
