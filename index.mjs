@@ -119,8 +119,8 @@ function typeText(text) {
       return;
     }
 
-    // Copy text to clipboard
-    clipboardy.writeSync(text);
+    // 🤖 Copy text to clipboard
+    clipboardy.writeSync("🤖" + text);
 
     // Simulate paste action
     exec(`xdotool key ctrl+v && xdotool key Return`, (error) => {
