@@ -97,7 +97,6 @@ async function transcribeAudio() {
       model: "whisper-large-v3-turbo", // Required model to use for transcription
       prompt: "", // Optional
       response_format: "json", // Optional
-      language: "en", // Optional
       temperature: 0.0, // Optional
     });
     console.log(transcription);
